@@ -12,7 +12,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@volunte
 const localPort = 8000;
 
 
-var serviceAccount = require("./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json");
+var serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
