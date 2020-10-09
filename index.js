@@ -3,19 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
-var admin = require('firebase-admin');
 require('dotenv').config()
-
-//const serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@volunteer-network-clust.1khvz.mongodb.net/volunteer-network?retryWrites=true&w=majority`;
 
-
-// admin.initializeApp({
-//     credential: admin.credential.cert(serviceAccount),
-//     databaseURL: process.env.DB_VOL
-// });
 
 
 app.use(cors());
@@ -64,30 +56,10 @@ client.connect(err => {
     })
     // GETTING TASK BY EMAIL
     app.get('/addEvent/:email', (req, res) => {
-        // const bearer = req.headers.authorization;
-        // if (bearer && bearer.startsWith('Bearer ')) {
-        //     const idToken = bearer.split(' ')[1];
-            // idToken comes from the client app
-            // admin.auth().verifyIdToken(idToken)
-        //         .then(function (decodedToken) {
-        //             let tokenEmail = decodedToken.email;
-        //             const queryEmail = req.params.email;
-        //             if (tokenEmail === queryEmail) {
-                        
-        //             }
-        //             // ...
-        //         }).catch(function (error) {
-        //             res.status(401).send('Un-Authorized status')
-        //         });
-        // }
-        // else {
-        //     res.status(401).send('Un-Authorized status')
-        // }
         userList.find({ email: req.params.email })
             .toArray((err, documents) => {
                 res.status(200).send(documents);
             })
-
 
     });
     //   DELETE
