@@ -6,11 +6,12 @@ const MongoClient = require('mongodb').MongoClient;
 var admin = require('firebase-admin');
 require('dotenv').config()
 
+const serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
+
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@volunteer-network-clust.1khvz.mongodb.net/volunteer-network?retryWrites=true&w=majority`;
 
 
-var serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
