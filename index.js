@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@volunteer-network-clust.1khvz.mongodb.net/volunteer-network?retryWrites=true&w=majority`;
 
-const localPort = 8000;
+const localPort = 5000;
 
 
 var serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
@@ -80,7 +80,6 @@ client.connect(err => {
                                 res.status(200).send(documents);
                             })
                     }
-
                     // ...
                 }).catch(function (error) {
                     res.status(401).send('Un-Authorized status')
