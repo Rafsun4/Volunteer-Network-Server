@@ -9,8 +9,6 @@ require('dotenv').config()
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@volunteer-network-clust.1khvz.mongodb.net/volunteer-network?retryWrites=true&w=majority`;
 
-const localPort = 5000;
-
 
 var serviceAccount = require(`./configs/volunteer-network-385fc-firebase-adminsdk-svnf2-cc01646667.json`);
 
@@ -107,4 +105,7 @@ app.get('/', (req, res) => {
     res.send('Database is really working!!!');
 })
 
-app.listen(process.env.PORT || localPort);
+const server = app.listen(process.env.PORT || 5000, function () {
+    let port = server.address().port;
+    console.log("Express is working on port " + port);
+});
